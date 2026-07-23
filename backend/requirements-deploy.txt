@@ -1,0 +1,13 @@
+# متطلبات الإنتاج فقط (Backend يستخدم فعلياً هذه الحزم فقط)
+# requirements.txt الأصلي يحتوي على حزم إضافية ضخمة غير مستخدمة (google-genai, boto3, pymongo،
+# litellm، fastapi-jwt-extended...) وبعضها يُحمَّل من رابط خارجي معطوب (403) يفشل عند أي تثبيت جديد.
+# لذلك نستخدم هذا الملف المخصص للاستضافة السحابية فقط.
+fastapi==0.110.1
+uvicorn[standard]==0.25.0
+starlette==0.37.2
+aiosqlite==0.22.1
+python-dotenv==1.2.2
+pydantic==2.13.4
+slowapi>=0.1.9
+PyJWT==2.13.0
+schedule==1.2.0

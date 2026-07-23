@@ -1,0 +1,111 @@
+{
+  "theme": "light",
+  "archetype": "Organic & Earthy (Customized for Medical / Eye Clinic)",
+  "design_philosophy": "Calm, professional, and accessible medical dashboard designed natively for RTL (Arabic). Focus on cognitive load reduction with clear data entry grids for eye examinations.",
+  "typography": {
+    "font_family": {
+      "heading": "Cairo, Tajawal, or Almarai (Sans-serif Arabic fonts)",
+      "body": "Cairo, Tajawal, or Almarai",
+      "mono": "JetBrains Mono (for numbers/data cells)"
+    },
+    "scale": {
+      "h1": "text-3xl sm:text-4xl font-bold tracking-tight text-start",
+      "h2": "text-2xl sm:text-3xl font-semibold tracking-tight text-start",
+      "h3": "text-xl sm:text-2xl font-medium text-start",
+      "body": "text-base leading-relaxed text-start",
+      "small": "text-sm text-start"
+    },
+    "notes": "Ensure text-start, text-end, ms-, me-, ps-, pe- are used instead of left/right specific classes to support RTL natively. Line-height should be relaxed (1.6) for Arabic legibility."
+  },
+  "colors": {
+    "background": {
+      "main": "#F8FAFC",
+      "card": "#FFFFFF",
+      "input": "#FFFFFF"
+    },
+    "primary": {
+      "DEFAULT": "#0B6E4F",
+      "light": "#2A9D8F",
+      "dark": "#074C36",
+      "foreground": "#FFFFFF"
+    },
+    "secondary": {
+      "DEFAULT": "#5B3A7D",
+      "light": "#7D5BA6",
+      "dark": "#3E2656",
+      "foreground": "#FFFFFF"
+    },
+    "accent": {
+      "DEFAULT": "#2A9D8F",
+      "foreground": "#FFFFFF"
+    },
+    "text": {
+      "main": "#0F172A",
+      "muted": "#64748B",
+      "inverse": "#FFFFFF"
+    },
+    "border": "#E2E8F0",
+    "table_header": "#5B3A7D"
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous spacing. Use p-6 or p-8 for cards. Gap-6 for grid layouts.",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "rtl_guidelines": "Set dir='rtl' on the root HTML. Use Tailwind logical properties: ms- (margin-start), me- (margin-end), ps- (padding-start), pe- (padding-end), rounded-s-md, rounded-e-md."
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#0B6E4F] hover:bg-[#074C36] text-white rounded-md px-6 py-2 transition-colors duration-200 font-medium",
+      "secondary": "bg-[#5B3A7D] hover:bg-[#3E2656] text-white rounded-md px-6 py-2 transition-colors duration-200 font-medium",
+      "shortcut": "bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] rounded-full px-4 py-1 text-sm transition-colors duration-200"
+    },
+    "cards": {
+      "default": "bg-white rounded-xl shadow-sm border border-slate-200 p-6"
+    },
+    "inputs": {
+      "default": "w-full border border-slate-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#2A9D8F] focus:border-[#2A9D8F] outline-none transition-all text-start bg-white"
+    },
+    "table": {
+      "wrapper": "w-full overflow-x-auto rounded-lg border border-slate-200",
+      "header": "bg-[#5B3A7D] text-white text-sm font-medium",
+      "header_cell": "px-4 py-3 text-center whitespace-nowrap",
+      "row": "border-b border-slate-100 last:border-0",
+      "cell": "px-4 py-3 text-center bg-white",
+      "input_cell": "w-full text-center border-0 bg-transparent focus:ring-2 focus:ring-[#2A9D8F] outline-none py-1"
+    }
+  },
+  "pages": {
+    "secretary": {
+      "layout": "Centered form layout or split screen.",
+      "features": [
+        "Patient Entry Form: Name, Age, Date (auto-filled).",
+        "Submit button to push data to waiting list."
+      ]
+    },
+    "doctor": {
+      "layout": "Sidebar/List on the right (RTL), Main content on the left.",
+      "features": [
+        "Waiting List: List of patients sent by secretary.",
+        "Patient Details: Header showing Name, Age, Date.",
+        "Eye Exam Table: R/L rows, Columns (VA, SPH, CYL, AX, BCVA, NEAR).",
+        "Clinical Notes & Diagnosis Textareas.",
+        "Prescription Textarea.",
+        "Shortcut Buttons: Quick insert phrases into Notes/Prescription.",
+        "Save/Archive Record Button."
+      ]
+    }
+  },
+  "media": {
+    "icons_library": "lucide-react",
+    "images": {}
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: Set dir='rtl' in the index.html or root layout.",
+    "Use Tailwind logical properties (ms-, me-, ps-, pe-, text-start, text-end) for margin, padding, and text alignment to naturally support RTL.",
+    "Ensure 'Cairo', 'Tajawal', or 'Almarai' fonts are imported from Google Fonts in index.html.",
+    "Implement the Secretary and Doctor views as separate routes (e.g., /secretary, /doctor).",
+    "Mock the backend state using a React Context or simple state lifted to a parent component (or local storage) to pass patients from Secretary to Doctor.",
+    "For the eye exam table, strictly use the purple background (#5B3A7D) for the header row and row labels (R, L), with white inputs.",
+    "Implement the shortcut buttons feature: when clicked, they should append their text to the currently focused or specific textarea (e.g., Prescription).",
+    "Add data-testid attributes to all form inputs, buttons, and table cells."
+  ]
+}

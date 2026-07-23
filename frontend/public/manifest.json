@@ -1,0 +1,39 @@
+{
+  "short_name": "عيادة د. وسن عبدالعزيز رشيد",
+  "name": "عيادة الدكتورة وسن عبدالعزيز رشيد لطب العيون",
+  "description": "تطبيق إدارة عيادة الدكتورة وسن عبدالعزيز رشيد لطب العيون",
+  "icons": [
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/secretary",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#5B3A7D",
+  "background_color": "#F8FAFC",
+  "lang": "ar",
+  "dir": "rtl",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "واجهة السكرتير",
+      "short_name": "سكرتير",
+      "url": "/secretary"
+    },
+    {
+      "name": "واجهة الطبيبة",
+      "short_name": "طبيبة",
+      "url": "/doctor"
+    }
+  ]
+}
