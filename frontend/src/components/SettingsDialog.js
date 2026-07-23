@@ -66,7 +66,7 @@ const SettingsDialog = ({ open, onOpenChange }) => {
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">الرمز الحالي</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-ink-200 mb-2">الرمز الحالي</label>
             <Input
               data-testid="settings-current-pin-input"
               type="password" inputMode="numeric" maxLength={20}
@@ -76,7 +76,7 @@ const SettingsDialog = ({ open, onOpenChange }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">الرمز الجديد</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-ink-200 mb-2">الرمز الجديد</label>
             <Input
               data-testid="settings-new-pin-input"
               type="password" inputMode="numeric" maxLength={20}
@@ -85,7 +85,7 @@ const SettingsDialog = ({ open, onOpenChange }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">تأكيد الرمز الجديد</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-ink-200 mb-2">تأكيد الرمز الجديد</label>
             <Input
               data-testid="settings-confirm-pin-input"
               type="password" inputMode="numeric" maxLength={20}

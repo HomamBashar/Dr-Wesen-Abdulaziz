@@ -211,23 +211,23 @@ const DoctorPage = () => {
   const handleLogout = () => { logout(); navigate("/login"); };
 
   return (
-    <div className="min-h-screen bg-[#FAFBFC] dark:bg-slate-950">
-      <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 no-print">
+    <div className="min-h-screen bg-[#FAFBFC] dark:bg-ink-950">
+      <header className="bg-white dark:bg-ink-900 border-b border-slate-200 dark:border-ink-700 sticky top-0 z-10 no-print">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-[#5B3A7D] flex items-center justify-center">
               <Eye className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-[#1F2937] dark:text-slate-100">عيادة د. وسن عبدالعزيز رشيد</h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400">د. وسن عبدالعزيز رشيد</p>
+              <h1 className="text-lg font-bold text-[#1F2937] dark:text-ink-50">عيادة د. وسن عبدالعزيز رشيد</h1>
+              <p className="text-xs text-slate-500 dark:text-ink-400">د. وسن عبدالعزيز رشيد</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <button
               data-testid="notification-bell"
               onClick={clearNotifications}
-              className="relative w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center"
+              className="relative w-10 h-10 rounded-full hover:bg-slate-100 dark:hover:bg-ink-800 flex items-center justify-center"
             >
               <Bell className={`w-5 h-5 text-[#5B3A7D] ${bellRinging ? 'bell-ringing' : ''}`} />
               {notifCount > 0 && (
@@ -261,15 +261,15 @@ const DoctorPage = () => {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 py-6 no-print">
+      <div className="max-w-[1800px] mx-auto px-6 py-6 no-print">
         <div className="grid lg:grid-cols-12 gap-6">
           {/* Sidebar */}
           <aside className="lg:col-span-4 space-y-6">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-5">
               <div className="mb-4">
-                <h2 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">قائمة الانتظار</h2>
+                <h2 className="text-sm font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider">قائمة الانتظار</h2>
                 <div className="relative mt-3">
-                  <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 start-3 text-slate-400 dark:text-slate-500" />
+                  <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 start-3 text-slate-400 dark:text-ink-500" />
                   <Input
                     data-testid="search-patient-input"
                     value={searchTerm}
@@ -282,7 +282,7 @@ const DoctorPage = () => {
 
               <div className="space-y-2 max-h-[calc(100vh-300px)] overflow-y-auto">
                 {pendingPatients.length === 0 ? (
-                  <p className="text-center text-slate-400 dark:text-slate-500 py-8 text-sm">{searchTerm.trim() ? "لا توجد نتائج مطابقة" : "لا يوجد مرضى"}</p>
+                  <p className="text-center text-slate-400 dark:text-ink-500 py-8 text-sm">{searchTerm.trim() ? "لا توجد نتائج مطابقة" : "لا يوجد مرضى"}</p>
                 ) : (
                   pendingPatients.map((p) => (
                     <div key={p.id} className="relative group">
@@ -292,11 +292,11 @@ const DoctorPage = () => {
                         className={`w-full text-right p-3 pe-10 rounded-xl border transition-all ${
                           selectedPatient?.id === p.id
                             ? 'bg-[#5B3A7D] text-white border-[#5B3A7D]'
-                            : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-800'
+                            : 'bg-white dark:bg-ink-900 hover:bg-slate-50 dark:hover:bg-ink-800 border-slate-200 dark:border-ink-700'
                         }`}
                       >
                         <p className="font-semibold text-sm">{p.name}</p>
-                        <p className={`text-xs mt-0.5 ${selectedPatient?.id === p.id ? 'text-white/80' : 'text-slate-500 dark:text-slate-400'}`}>
+                        <p className={`text-xs mt-0.5 ${selectedPatient?.id === p.id ? 'text-white/80' : 'text-slate-500 dark:text-ink-400'}`}>
                           {p.age} سنة
                         </p>
                       </button>
@@ -317,9 +317,9 @@ const DoctorPage = () => {
             </div>
 
             {/* Shortcuts */}
-            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-5">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">الاختصارات</h2>
+                <h2 className="text-sm font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider">الاختصارات</h2>
                 <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
                   <DialogTrigger asChild>
                     <Button data-testid="add-shortcut-dialog-button" size="icon" variant="outline" className="h-8 w-8">
@@ -368,7 +368,7 @@ const DoctorPage = () => {
 
               <div className="space-y-2 max-h-64 overflow-y-auto">
                 {shortcuts.length === 0 ? (
-                  <p className="text-center text-slate-400 dark:text-slate-500 py-4 text-xs">اضغط + لإضافة اختصار</p>
+                  <p className="text-center text-slate-400 dark:text-ink-500 py-4 text-xs">اضغط + لإضافة اختصار</p>
                 ) : (
                   shortcuts.map((s) => (
                     editingShortcut?.id === s.id ? (
@@ -429,10 +429,10 @@ const DoctorPage = () => {
                 onDoctorPrivateNoteChange={handleDoctorNoteChange}
               />
             ) : (
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-16 text-center">
+              <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-16 text-center">
                 <Eye className="w-20 h-20 mx-auto text-slate-200 mb-4" />
-                <p className="text-lg text-slate-500 dark:text-slate-400 mb-1">اختر مريضاً لبدء الفحص</p>
-                <p className="text-sm text-slate-400 dark:text-slate-500">من القائمة على اليمين</p>
+                <p className="text-lg text-slate-500 dark:text-ink-400 mb-1">اختر مريضاً لبدء الفحص</p>
+                <p className="text-sm text-slate-400 dark:text-ink-500">من القائمة على اليمين</p>
               </div>
             )}
           </main>

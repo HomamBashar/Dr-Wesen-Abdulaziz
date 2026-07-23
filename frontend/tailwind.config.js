@@ -52,6 +52,23 @@ module.exports = {
           '3': 'hsl(var(--chart-3))',
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))'
+        },
+        // Purple-tinted neutral scale used for dark mode surfaces, so dark
+        // mode reads as a deliberate deep-violet theme (matching the brand
+        // purple #5B3A7D) instead of flat/generic gray.
+        ink: {
+          50: '#f4f2f8',
+          100: '#e4e0eb',
+          200: '#d2ccdb',
+          300: '#b5adc2',
+          400: '#9187a1',
+          500: '#635a72',
+          600: '#453f50',
+          700: '#312d39',
+          800: '#221f28',
+          850: '#1d1b23',
+          900: '#18161d',
+          950: '#110f15'
         }
       },
       keyframes: {

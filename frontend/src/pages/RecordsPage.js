@@ -164,8 +164,8 @@ const RecordsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFBFC] dark:bg-slate-950">
-      <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 no-print">
+    <div className="min-h-screen bg-[#FAFBFC] dark:bg-ink-950">
+      <header className="bg-white dark:bg-ink-900 border-b border-slate-200 dark:border-ink-700 sticky top-0 z-10 no-print">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Button
@@ -179,8 +179,8 @@ const RecordsPage = () => {
               <Archive className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-[#1F2937] dark:text-slate-100">سجل المرضى</h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400">الحالات المكتملة</p>
+              <h1 className="text-lg font-bold text-[#1F2937] dark:text-ink-50">سجل المرضى</h1>
+              <p className="text-xs text-slate-500 dark:text-ink-400">الحالات المكتملة</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -199,7 +199,7 @@ const RecordsPage = () => {
 
       {/* Edit mode: reuse the shared exam form */}
       {editingPatient ? (
-        <main className="max-w-5xl mx-auto px-6 py-6 no-print">
+        <main className="w-full max-w-[1800px] mx-auto px-6 lg:px-10 py-6 no-print">
           <div className="mb-4">
             <Button
               data-testid="cancel-edit-record-button"
@@ -225,9 +225,9 @@ const RecordsPage = () => {
         </main>
       ) : (
       <main className="max-w-6xl mx-auto px-6 py-8 no-print">
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 mb-6">
+        <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-6 mb-6">
           <div className="relative">
-            <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 start-3 text-slate-400 dark:text-slate-500" />
+            <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 start-3 text-slate-400 dark:text-ink-500" />
             <Input
               data-testid="records-search-input"
               value={searchTerm}
@@ -238,11 +238,11 @@ const RecordsPage = () => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 overflow-hidden">
           {loading ? (
-            <div className="text-center py-16 text-slate-400 dark:text-slate-500">جاري التحميل...</div>
+            <div className="text-center py-16 text-slate-400 dark:text-ink-500">جاري التحميل...</div>
           ) : records.length === 0 ? (
-            <div className="text-center py-16 text-slate-400 dark:text-slate-500">
+            <div className="text-center py-16 text-slate-400 dark:text-ink-500">
               <Archive className="w-12 h-12 mx-auto mb-3 opacity-30" />
               <p className="text-sm">لا توجد سجلات مطابقة</p>
             </div>
@@ -252,16 +252,16 @@ const RecordsPage = () => {
                 <div
                   key={r.id}
                   data-testid={`record-item-${r.id}`}
-                  className="flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  className="flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-ink-800 transition-colors"
                 >
                   <div>
-                    <p className="font-semibold text-[#1F2937] dark:text-slate-100">{r.name}</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-1">
+                    <p className="font-semibold text-[#1F2937] dark:text-ink-50">{r.name}</p>
+                    <p className="text-xs text-slate-500 dark:text-ink-400 mt-0.5 flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {r.age} سنة • {formatDate(r.updated_at || r.created_at)}
                     </p>
                     {r.diagnosis && (
-                      <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 truncate max-w-md">
+                      <p className="text-xs text-slate-400 dark:text-ink-500 mt-1 truncate max-w-md">
                         {r.diagnosis}
                       </p>
                     )}

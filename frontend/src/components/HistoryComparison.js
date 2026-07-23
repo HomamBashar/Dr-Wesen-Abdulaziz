@@ -55,23 +55,23 @@ const ChangeIcon = ({ status }) => {
   if (status === 'up') return <TrendingUp className="w-3 h-3 text-amber-500" />;
   if (status === 'down') return <TrendingDown className="w-3 h-3 text-sky-500" />;
   if (status === 'different') return <span className="w-3 h-3 inline-block rounded-full bg-violet-400" />;
-  return <Minus className="w-3 h-3 text-slate-300 dark:text-slate-600" />;
+  return <Minus className="w-3 h-3 text-slate-300 dark:text-ink-600" />;
 };
 
 const EyeColumn = ({ title, data, compareAgainst }) => (
   <div className="flex-1 min-w-0">
-    <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 text-center">{title}</h4>
-    <div className="rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden">
+    <h4 className="text-xs font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider mb-2 text-center">{title}</h4>
+    <div className="rounded-lg border border-slate-200 dark:border-ink-700 overflow-hidden">
       {EYE_ROWS.map((row, i) => {
         const val = data?.[row.key] || '—';
         const status = compareAgainst ? compareValue(compareAgainst[row.key], data?.[row.key]) : null;
         return (
           <div
             key={row.key}
-            className={`flex items-center justify-between px-3 py-1.5 text-sm ${i % 2 === 0 ? 'bg-slate-50 dark:bg-slate-800/50' : 'bg-white dark:bg-slate-900'}`}
+            className={`flex items-center justify-between px-3 py-1.5 text-sm ${i % 2 === 0 ? 'bg-slate-50 dark:bg-ink-800/60' : 'bg-white dark:bg-ink-900'}`}
           >
-            <span className="text-slate-400 dark:text-slate-500 text-xs">{row.label}</span>
-            <span className="flex items-center gap-1.5 font-medium text-[#1F2937] dark:text-slate-100">
+            <span className="text-slate-400 dark:text-ink-500 text-xs">{row.label}</span>
+            <span className="flex items-center gap-1.5 font-medium text-[#1F2937] dark:text-ink-50">
               {compareAgainst && <ChangeIcon status={status} />}
               {val}
             </span>
@@ -131,11 +131,11 @@ const HistoryComparison = ({ patientId, currentData }) => {
           مقارنة بالفحوصات السابقة
         </Button>
       ) : (
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+        <div className="rounded-2xl border border-slate-200 dark:border-ink-700 bg-white dark:bg-ink-900 p-5">
           <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
             <div className="flex items-center gap-2">
               <History className="w-4 h-4 text-[#5B3A7D] dark:text-violet-400" />
-              <h3 className="text-sm font-bold text-[#1F2937] dark:text-slate-100">مقارنة السجلات السابقة</h3>
+              <h3 className="text-sm font-bold text-[#1F2937] dark:text-ink-50">مقارنة السجلات السابقة</h3>
             </div>
             <div className="flex items-center gap-2">
               {history.length > 0 && (
@@ -163,23 +163,23 @@ const HistoryComparison = ({ patientId, currentData }) => {
           </div>
 
           {loading ? (
-            <div className="text-center py-10 text-sm text-slate-400 dark:text-slate-500">جاري التحميل...</div>
+            <div className="text-center py-10 text-sm text-slate-400 dark:text-ink-500">جاري التحميل...</div>
           ) : history.length === 0 ? (
-            <div className="text-center py-10 text-sm text-slate-400 dark:text-slate-500">
+            <div className="text-center py-10 text-sm text-slate-400 dark:text-ink-500">
               لا توجد زيارات سابقة مكتملة لهذا المريض
             </div>
           ) : (
             <>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="text-center">
-                  <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase">زيارة سابقة</p>
-                  <p className="text-sm font-semibold text-[#1F2937] dark:text-slate-100">
+                  <p className="text-xs font-bold text-slate-400 dark:text-ink-500 uppercase">زيارة سابقة</p>
+                  <p className="text-sm font-semibold text-[#1F2937] dark:text-ink-50">
                     {formatDate(selected?.updated_at || selected?.created_at)}
                   </p>
                 </div>
                 <div className="text-center">
                   <p className="text-xs font-bold text-[#0B6E4F] dark:text-emerald-400 uppercase">الزيارة الحالية</p>
-                  <p className="text-sm font-semibold text-[#1F2937] dark:text-slate-100">اليوم</p>
+                  <p className="text-sm font-semibold text-[#1F2937] dark:text-ink-50">اليوم</p>
                 </div>
               </div>
 
@@ -195,23 +195,23 @@ const HistoryComparison = ({ patientId, currentData }) => {
               </div>
 
               {(selected?.diagnosis || currentData?.diagnosis) && (
-                <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-100 dark:border-ink-700">
                   <div>
-                    <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-1">التشخيص (سابق)</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">{selected?.diagnosis || '—'}</p>
+                    <p className="text-xs font-bold text-slate-400 dark:text-ink-500 uppercase mb-1">التشخيص (سابق)</p>
+                    <p className="text-sm text-slate-600 dark:text-ink-200">{selected?.diagnosis || '—'}</p>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-1">التشخيص (حالي)</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">{currentData?.diagnosis || '—'}</p>
+                    <p className="text-xs font-bold text-slate-400 dark:text-ink-500 uppercase mb-1">التشخيص (حالي)</p>
+                    <p className="text-sm text-slate-600 dark:text-ink-200">{currentData?.diagnosis || '—'}</p>
                   </div>
                 </div>
               )}
 
-              <div className="flex items-center gap-4 mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-400 dark:text-slate-500">
+              <div className="flex items-center gap-4 mt-4 pt-3 border-t border-slate-100 dark:border-ink-700 text-xs text-slate-400 dark:text-ink-500">
                 <span className="flex items-center gap-1"><TrendingUp className="w-3 h-3 text-amber-500" /> ارتفاع بالقيمة</span>
                 <span className="flex items-center gap-1"><TrendingDown className="w-3 h-3 text-sky-500" /> انخفاض بالقيمة</span>
                 <span className="flex items-center gap-1"><span className="w-3 h-3 inline-block rounded-full bg-violet-400" /> تغيّر نصي</span>
-                <span className="flex items-center gap-1"><Minus className="w-3 h-3 text-slate-300 dark:text-slate-600" /> بدون تغيير</span>
+                <span className="flex items-center gap-1"><Minus className="w-3 h-3 text-slate-300 dark:text-ink-600" /> بدون تغيير</span>
               </div>
             </>
           )}

@@ -1,5 +1,9 @@
 // Service Worker for عيادة د. وسن عبدالعزيز رشيد PWA
-const CACHE_NAME = 'dr-wesen-clinic-v1';
+//
+// IMPORTANT: bump CACHE_NAME on every deploy that should force clients to
+// pick up fresh content (or, better, just rely on the network-first
+// strategy below — it no longer requires bumping this at all).
+const CACHE_NAME = 'dr-wesen-clinic-v2';
 const urlsToCache = [
   '/',
   '/secretary',
@@ -37,13 +41,21 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Network-first: always try to get the latest version from the server.
+  // Only fall back to the cached copy if the network request fails
+  // (e.g. the clinic PC is offline). This is what makes new deployments
+  // show up immediately instead of being stuck on whatever was cached
+  // the very first time the app was opened.
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).catch(() => {
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request).then((cached) => {
+          if (cached) return cached;
           if (event.request.mode === 'navigate') {
             return caches.match('/');
           }

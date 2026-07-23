@@ -60,12 +60,12 @@ const ExamForm = forwardRef(function ExamForm({
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+    <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 overflow-hidden">
       {/* Patient header */}
-      <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between flex-wrap gap-3">
+      <div className="p-6 border-b border-slate-100 dark:border-ink-700 flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h2 className="text-2xl font-bold text-[#1F2937] dark:text-slate-100">{patient?.name}</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+          <h2 className="text-2xl font-bold text-[#1F2937] dark:text-ink-50">{patient?.name}</h2>
+          <p className="text-sm text-slate-500 dark:text-ink-400 mt-1">
             {patient?.age} سنة • {patient?.date}
             {otherEditorPresent && (
               <span className="ms-3 inline-flex items-center gap-1 text-emerald-600 text-xs">
@@ -87,7 +87,7 @@ const ExamForm = forwardRef(function ExamForm({
 
       <div className="p-6">
         {/* Eye exam table */}
-        <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">قياسات النظر</h3>
+        <h3 className="text-sm font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider mb-3">قياسات النظر</h3>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
@@ -109,7 +109,7 @@ const ExamForm = forwardRef(function ExamForm({
                   {EYE_COLS.map((c) => {
                     const path = `${eye}.${c.key}`;
                     return (
-                      <td key={c.key} className="border border-slate-100 dark:border-slate-800 p-1">
+                      <td key={c.key} className="border border-slate-100 dark:border-ink-700 p-1">
                         <input
                           data-testid={`${eye === 'right_eye' ? 'right' : 'left'}-eye-${c.key}-input`}
                           value={data[eye][c.key] || ""}
@@ -117,7 +117,7 @@ const ExamForm = forwardRef(function ExamForm({
                           onFocus={() => setFocusedField(path)}
                           onBlur={() => setFocusedField(null)}
                           maxLength={50}
-                          className="w-full text-center text-sm text-[#1F2937] dark:text-slate-100 bg-transparent border-0 focus:outline-none focus:bg-slate-50 dark:focus:bg-slate-800 p-2 rounded"
+                          className="w-full text-center text-sm text-[#1F2937] dark:text-ink-50 bg-transparent border-0 focus:outline-none focus:bg-slate-50 dark:focus:bg-ink-800 p-2 rounded"
                         />
                       </td>
                     );
@@ -128,7 +128,12 @@ const ExamForm = forwardRef(function ExamForm({
           </table>
         </div>
 
-        <OpticalCalculator rightEye={data.right_eye} leftEye={data.left_eye} age={patient?.age} />
+        {/* Lens-suggestion calculator — clinical decision aid for the doctor
+            only. Only ever rendered on DoctorPage (mirrors the private-note
+            gating below), so the secretary never sees it. */}
+        {onDoctorPrivateNoteChange && (
+          <OpticalCalculator rightEye={data.right_eye} leftEye={data.left_eye} age={patient?.age} />
+        )}
 
         <HistoryComparison patientId={patient?.id} currentData={data} />
 
@@ -138,7 +143,7 @@ const ExamForm = forwardRef(function ExamForm({
             const path = `right_eye.${field}`;
             return (
               <div key={field}>
-                <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase block mb-1.5">
+                <label className="text-xs font-semibold text-slate-600 dark:text-ink-400 uppercase block mb-1.5">
                   {field}
                 </label>
                 <Input
@@ -163,7 +168,7 @@ const ExamForm = forwardRef(function ExamForm({
         {/* Shortcuts row */}
         {shortcuts.length > 0 && (
           <div className="mt-6">
-            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">
+            <label className="text-xs font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider block mb-2">
               اختصارات سريعة
             </label>
             <div className="flex flex-wrap gap-2">
@@ -187,7 +192,7 @@ const ExamForm = forwardRef(function ExamForm({
         {/* Text sections */}
         <div className="mt-6 space-y-4">
           <div>
-            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">التشخيص</label>
+            <label className="text-xs font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider block mb-2">التشخيص</label>
             <Textarea
               data-testid="diagnosis-textarea"
               value={data.diagnosis}
@@ -202,7 +207,7 @@ const ExamForm = forwardRef(function ExamForm({
           </div>
 
           <div>
-            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">
+            <label className="text-xs font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider block mb-2">
               الوصفة الطبية
             </label>
             <Textarea
@@ -219,7 +224,7 @@ const ExamForm = forwardRef(function ExamForm({
           </div>
 
           <div>
-            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-2">ملاحظات</label>
+            <label className="text-xs font-bold text-slate-500 dark:text-ink-400 uppercase tracking-wider block mb-2">ملاحظات</label>
             <Textarea
               data-testid="notes-textarea"
               value={data.notes}
@@ -247,7 +252,7 @@ const ExamForm = forwardRef(function ExamForm({
               onBlur={() => setFocusedField(null)}
               rows={2}
               maxLength={2000}
-              className="resize-none bg-white dark:bg-slate-900"
+              className="resize-none bg-white dark:bg-ink-900"
               placeholder="مثال: المريض متأخر عن موعده، أو له تحسس من دواء معيّن..."
             />
           </div>
@@ -264,7 +269,7 @@ const ExamForm = forwardRef(function ExamForm({
                 onChange={(e) => onDoctorPrivateNoteChange(e.target.value)}
                 rows={2}
                 maxLength={2000}
-                className="resize-none bg-white dark:bg-slate-900"
+                className="resize-none bg-white dark:bg-ink-900"
                 placeholder="ملاحظة شخصية خاصة بك حول هذه الحالة..."
               />
             </div>
@@ -272,7 +277,7 @@ const ExamForm = forwardRef(function ExamForm({
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex gap-3 mt-8 pt-6 border-t border-slate-100 dark:border-ink-700">
           {onSaveOnly && (
             <Button
               data-testid="save-patient-button"

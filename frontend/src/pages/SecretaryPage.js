@@ -244,8 +244,8 @@ const SecretaryPage = () => {
   const inExamCount = patients.filter(p => p.status === 'in_exam').length;
 
   return (
-    <div className="min-h-screen bg-[#FAFBFC] dark:bg-slate-950">
-      <header className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 no-print">
+    <div className="min-h-screen bg-[#FAFBFC] dark:bg-ink-950">
+      <header className="bg-white dark:bg-ink-900 border-b border-slate-200 dark:border-ink-700 sticky top-0 z-10 no-print">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {selectedPatient && (
@@ -261,8 +261,8 @@ const SecretaryPage = () => {
               <Eye className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-[#1F2937] dark:text-slate-100">عيادة الدكتورة وسن عبدالعزيز رشيد لطب العيون</h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400">واجهة السكرتير</p>
+              <h1 className="text-lg font-bold text-[#1F2937] dark:text-ink-50">عيادة الدكتورة وسن عبدالعزيز رشيد لطب العيون</h1>
+              <p className="text-xs text-slate-500 dark:text-ink-400">واجهة السكرتير</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -309,20 +309,20 @@ const SecretaryPage = () => {
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Registration */}
           <section>
-            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
+            <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-[#F3ECFA] flex items-center justify-center">
                   <UserPlus className="w-6 h-6 text-[#5B3A7D]" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-[#1F2937] dark:text-slate-100">مريض جديد</h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{today}</p>
+                  <h2 className="text-xl font-bold text-[#1F2937] dark:text-ink-50">مريض جديد</h2>
+                  <p className="text-sm text-slate-500 dark:text-ink-400">{today}</p>
                 </div>
               </div>
 
               <form onSubmit={handleAddPatient} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">اسم المريض</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-ink-200 mb-2">اسم المريض</label>
                   <Input
                     data-testid="secretary-patient-name-input"
                     value={name} onChange={(e) => setName(e.target.value)}
@@ -331,7 +331,7 @@ const SecretaryPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">العمر</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-ink-200 mb-2">العمر</label>
                   <Input
                     data-testid="secretary-patient-age-input"
                     type="number" value={age}
@@ -354,11 +354,11 @@ const SecretaryPage = () => {
 
           {/* Waiting Room */}
           <section>
-            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 min-h-full">
+            <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-6 min-h-full">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h2 className="text-xl font-bold text-[#1F2937] dark:text-slate-100">غرفة الانتظار</h2>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <h2 className="text-xl font-bold text-[#1F2937] dark:text-ink-50">غرفة الانتظار</h2>
+                  <p className="text-xs text-slate-500 dark:text-ink-400 mt-1">
                     <span className="text-amber-600 font-semibold">{waitingCount}</span> منتظر
                     {' • '}
                     <span className="text-blue-600 font-semibold">{inExamCount}</span> بالفحص
@@ -373,7 +373,7 @@ const SecretaryPage = () => {
                 </Button>
               </div>
               <div className="relative mb-3">
-                <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 start-3 text-slate-400 dark:text-slate-500" />
+                <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 start-3 text-slate-400 dark:text-ink-500" />
                 <Input
                   data-testid="waiting-room-search-input"
                   value={searchTerm}
@@ -382,10 +382,10 @@ const SecretaryPage = () => {
                   className="h-10 ps-9 text-sm"
                 />
               </div>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mb-3">اضغط على مريض لفتح ملفه ومساعدة الدكتورة</p>
+              <p className="text-xs text-slate-400 dark:text-ink-500 mb-3">اضغط على مريض لفتح ملفه ومساعدة الدكتورة</p>
               <div className="space-y-2 max-h-[500px] overflow-y-auto">
                 {patients.length === 0 ? (
-                  <div className="text-center py-12 text-slate-400 dark:text-slate-500">
+                  <div className="text-center py-12 text-slate-400 dark:text-ink-500">
                     <Eye className="w-12 h-12 mx-auto mb-3 opacity-30" />
                     <p className="text-sm">{searchTerm.trim() ? "لا توجد نتائج مطابقة" : "لا يوجد مرضى حالياً"}</p>
                   </div>
@@ -395,12 +395,12 @@ const SecretaryPage = () => {
                       <button
                         data-testid={`waiting-patient-${p.id}`}
                         onClick={() => handleSelectPatient(p)}
-                        className="w-full text-right p-4 pe-12 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-[#5B3A7D] hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                        className="w-full text-right p-4 pe-12 rounded-xl border border-slate-200 dark:border-ink-700 hover:border-[#5B3A7D] hover:bg-slate-50 dark:hover:bg-ink-800 transition-colors"
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-semibold text-[#1F2937] dark:text-slate-100">{p.name}</p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                            <p className="font-semibold text-[#1F2937] dark:text-ink-50">{p.name}</p>
+                            <p className="text-xs text-slate-500 dark:text-ink-400 mt-0.5">
                               {p.age} سنة • {formatWaitingTime(p.created_at)}
                             </p>
                           </div>
@@ -427,15 +427,15 @@ const SecretaryPage = () => {
 
         {/* Upcoming Appointments */}
         <section>
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+          <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#EAF6EC] flex items-center justify-center">
                   <CalendarClock className="w-5 h-5 text-[#2E7D32]" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-[#1F2937] dark:text-slate-100">المواعيد القادمة</h2>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  <h2 className="text-xl font-bold text-[#1F2937] dark:text-ink-50">المواعيد القادمة</h2>
+                  <p className="text-xs text-slate-500 dark:text-ink-400 mt-0.5">
                     <span className="font-semibold text-[#5B3A7D]">{appointments.length}</span> موعد محجوز
                   </p>
                 </div>
@@ -494,7 +494,7 @@ const SecretaryPage = () => {
             )}
 
             {appointments.length === 0 ? (
-              <div className="text-center py-10 text-slate-400 dark:text-slate-500">
+              <div className="text-center py-10 text-slate-400 dark:text-ink-500">
                 <CalendarClock className="w-10 h-10 mx-auto mb-2 opacity-30" />
                 <p className="text-sm">لا توجد مواعيد محجوزة حالياً</p>
               </div>
@@ -504,15 +504,15 @@ const SecretaryPage = () => {
                   <div
                     key={a.id}
                     data-testid={`appointment-item-${a.id}`}
-                    className="flex items-center justify-between p-4 rounded-xl border border-slate-200 dark:border-slate-800"
+                    className="flex items-center justify-between p-4 rounded-xl border border-slate-200 dark:border-ink-700"
                   >
                     <div>
-                      <p className="font-semibold text-[#1F2937] dark:text-slate-100">{a.name}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="font-semibold text-[#1F2937] dark:text-ink-50">{a.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-ink-400 mt-0.5">
                         {a.age} سنة • <span className="text-[#2E7D32] font-medium">{formatAppointment(a.appointment_date)}</span>
                       </p>
                       {a.appointment_note && (
-                        <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">{a.appointment_note}</p>
+                        <p className="text-xs text-slate-400 dark:text-ink-500 mt-1">{a.appointment_note}</p>
                       )}
                     </div>
                     <div className="flex items-center gap-2">
