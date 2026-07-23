@@ -1,0 +1,47 @@
+services:
+  clinic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dr-wesen-abdulaziz
+    restart: unless-stopped
+    # لم يعد المنفذ 80 مكشوفاً مباشرة على الإنترنت — Caddy هو من يستقبل
+    # الزيارات الآن (على 80/443) ويوصلها داخلياً لهذا الحاوية عبر الشبكة
+    # الداخلية بين الحاويات، مما يتيح HTTPS حقيقي أمام المستخدم.
+    expose:
+      - "8001"
+    environment:
+      - DATABASE_PATH=/var/data/clinic.db
+      - SECRETARY_PIN=${SECRETARY_PIN}
+      - DOCTOR_PIN=${DOCTOR_PIN}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - CORS_ORIGINS=*
+      - PORT=8001
+    volumes:
+      # يحفظ قاعدة البيانات على قرص السيرفر نفسه (خارج الحاوية)
+      # حتى لو حذفت الحاوية أو أعدت بناءها، البيانات تبقى في هذا المجلد
+      - clinic-data:/var/data
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: dr-wesen-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DUCKDNS_DOMAIN=${DUCKDNS_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - clinic
+
+volumes:
+  clinic-data:
+    driver: local
+  caddy-data:
+    driver: local
+  caddy-config:
+    driver: local
