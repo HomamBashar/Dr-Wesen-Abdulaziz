@@ -430,7 +430,7 @@ const DoctorPage = () => {
               />
             ) : (
               <div className="bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 p-16 text-center">
-                <Eye className="w-20 h-20 mx-auto text-slate-200 mb-4" />
+                <Eye className="w-20 h-20 mx-auto text-slate-200 dark:text-ink-700 mb-4" />
                 <p className="text-lg text-slate-500 dark:text-ink-400 mb-1">اختر مريضاً لبدء الفحص</p>
                 <p className="text-sm text-slate-400 dark:text-ink-500">من القائمة على اليمين</p>
               </div>

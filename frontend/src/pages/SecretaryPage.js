@@ -436,7 +436,7 @@ const SecretaryPage = () => {
                 <div>
                   <h2 className="text-xl font-bold text-[#1F2937] dark:text-ink-50">المواعيد القادمة</h2>
                   <p className="text-xs text-slate-500 dark:text-ink-400 mt-0.5">
-                    <span className="font-semibold text-[#5B3A7D]">{appointments.length}</span> موعد محجوز
+                    <span className="font-semibold text-[#5B3A7D] dark:text-violet-400">{appointments.length}</span> موعد محجوز
                   </p>
                 </div>
               </div>
@@ -509,7 +509,7 @@ const SecretaryPage = () => {
                     <div>
                       <p className="font-semibold text-[#1F2937] dark:text-ink-50">{a.name}</p>
                       <p className="text-xs text-slate-500 dark:text-ink-400 mt-0.5">
-                        {a.age} سنة • <span className="text-[#2E7D32] font-medium">{formatAppointment(a.appointment_date)}</span>
+                        {a.age} سنة • <span className="text-[#2E7D32] dark:text-emerald-400 font-medium">{formatAppointment(a.appointment_date)}</span>
                       </p>
                       {a.appointment_note && (
                         <p className="text-xs text-slate-400 dark:text-ink-500 mt-1">{a.appointment_note}</p>

@@ -57,7 +57,7 @@ const SettingsDialog = ({ open, onOpenChange }) => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <KeyRound className="w-5 h-5 text-[#5B3A7D]" />
+            <KeyRound className="w-5 h-5 text-[#5B3A7D] dark:text-violet-400" />
             الإعدادات - تغيير رمز الدخول
           </DialogTitle>
           <DialogDescription>

@@ -78,7 +78,7 @@ const ExamForm = forwardRef(function ExamForm({
           data-testid="quick-normal-button"
           onClick={applyNormal}
           variant="outline"
-          className="border-[#0B6E4F] text-[#0B6E4F] hover:bg-[#F0FDF4] gap-2"
+          className="border-[#0B6E4F] text-[#0B6E4F] dark:border-emerald-700 dark:text-emerald-400 hover:bg-[#F0FDF4] dark:hover:bg-emerald-950/40 gap-2"
         >
           <Zap className="w-4 h-4" />
           Normal (نقرة واحدة)
@@ -135,7 +135,14 @@ const ExamForm = forwardRef(function ExamForm({
           <OpticalCalculator rightEye={data.right_eye} leftEye={data.left_eye} age={patient?.age} />
         )}
 
-        <HistoryComparison patientId={patient?.id} currentData={data} />
+        {/* Visit-history comparison is a clinical review tool (trend of
+            SPH/CYL/diagnosis over time) — doctor-only, same gating as the
+            optical calculator above. Previously this rendered for both
+            roles, which is inconsistent with every other clinical tool in
+            this form. */}
+        {onDoctorPrivateNoteChange && (
+          <HistoryComparison patientId={patient?.id} currentData={data} />
+        )}
 
         {/* Lid/Cornea/Lens/Retina */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
