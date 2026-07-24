@@ -1,0 +1,53 @@
+@import "./styles/print.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  direction: rtl;
+  background-color: #FAFBFC;
+  color: #1F2937;
+  -webkit-font-smoothing: antialiased;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+/* Minimalist scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #D1D5DB; }
+
+/* Bell animation for new patient notification */
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  10%, 30% { transform: rotate(-15deg); }
+  20%, 40% { transform: rotate(15deg); }
+  50% { transform: rotate(0); }
+}
+
+.bell-ringing {
+  animation: bell-ring 0.8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* Status badge colors */
+.status-pending { background: #FEF3C7; color: #92400E; }
+.status-in_exam { background: #DBEAFE; color: #1E40AF; }
+.status-surgery_prep { background: #FED7AA; color: #9A3412; }
+.status-completed { background: #D1FAE5; color: #065F46; }
+
+/* Card hover */
+.hover-lift {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(91, 58, 125, 0.15);
+}
